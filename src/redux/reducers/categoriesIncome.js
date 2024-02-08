@@ -2,9 +2,9 @@ const initialState = {
     categoriesIncome: [
         { id: 0, name: 'Lương', icon: 'cash', color: '#F4A460' },
         { id: 1, name: 'Tiết kiệm', icon: 'account-cash', color: '#00BFFF' },
-        { id: 2, name: 'Quà tặng', icon: 'gift', color: 'orange' },
+        { id: 2, name: 'Thưởng', icon: 'gift', color: 'orange' },
         { id: 3, name: 'Đầu tư', icon: 'trending-up', color: '#00EE76' },
-        { id: 4, name: 'Kiếm thêm', icon: 'cash-100', color: '#CDBE70' }
+        { id: 4, name: 'Kiếm thêm', icon: 'briefcase-account', color: '#CDBE70' }
       ]
 }
 const categoriesIncomeReducer = (state = initialState, action) => {
@@ -30,6 +30,18 @@ const categoriesIncomeReducer = (state = initialState, action) => {
             return {
                 ...state,
                 categoriesIncome: newCategoriesIncome
+            }
+        }
+        case 'LIST_CATEGORIES_INCOME': {
+            return {
+                ...state,
+                categoriesIncomes: action.payload
+            }
+        }
+        case 'RESET_CATEGORIES_INCOME': {
+            return {
+                ...state,
+                categoriesIncome: initialState.categoriesIncome
             }
         }
         default:

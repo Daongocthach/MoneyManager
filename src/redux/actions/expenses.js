@@ -18,7 +18,13 @@ export const deleteExpense = (data) => {
         payload: data
     }
 }
-export const resetExpense = () => {
+export const listExpenses = (data) => {
+    return {
+        type: 'LIST_EXPENSES',
+        payload: data
+    }
+}
+export const resetExpenses = () => {
     return {
         type: 'RESET_EXPENSES'
     }

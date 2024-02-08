@@ -1,69 +1,49 @@
-import { useState, useEffect } from 'react'
-import { View, Text, StyleSheet, ScrollView } from 'react-native'
-import AsyncStorage from '@react-native-async-storage/async-storage'
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import Icon1 from 'react-native-vector-icons/MaterialIcons'
 import { useNavigation } from '@react-navigation/native'
+import { useSelector } from 'react-redux'
+import { useColorScheme } from 'nativewind'
 
-function CategoryExpense() {
+function CategoriesExpense() {
+    const { colorScheme } = useColorScheme()
     const navigation = useNavigation()
-    const [categories, setCategories] = useState([])
-    const onClickEdit = () => {
-        navigation.navigate('EditCategory')
-    }
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const storedData = await AsyncStorage.getItem('categoriesExpense')
-                if (storedData) {
-                    const parsedArray = JSON.parse(storedData)
-                    setCategories(parsedArray)
-                }
-            } catch (error) {
-                console.error('Error reading data from AsyncStorage:', error)
-            }
-        }
-        fetchData()
-    }, [])
+    const categories = useSelector(state => state.categoriesExpense.categoriesExpense)
     return (
-        <View style={styles.container}>
+        <View style={{ flex: 1, backgroundColor: colorScheme == 'dark' ? 'black' : 'white' }}>
+            <TouchableOpacity onPress={() => navigation.navigate('AddCategoryExpense', { id: categories.length })}
+                style={{
+                    borderColor: colorScheme == 'dark' ? '#AAAAAA' : 'black',
+                    borderWidth: 2, height: 50, alignItems: 'center', justifyContent: 'center', margin: 10, borderRadius: 10
+                }}>
+                <Text style={{ ...styles.text, color: colorScheme == 'dark' ? '#AAAAAA' : 'black' }}>Thêm danh mục mới</Text>
+            </TouchableOpacity>
             <ScrollView>
                 {Array.isArray(categories) && categories.map((category, index) => (
-                    <View style={{ ...styles.flexRow, margin: 10 }} key={index}>
+                    <TouchableOpacity style={{ ...styles.flexRow, margin: 15 }} key={index}
+                        onPress={() => navigation.navigate('AddCategoryExpense', {
+                            category: category
+                        })}>
                         <View style={{ ...styles.flexRow, gap: 10 }}>
-                            <Icon name={category?.icon} color={category.color} size={30}></Icon>
-                            <Text style={styles.text}>{category.name}</Text>
+                            <Icon name={category?.icon} color={category.color} size={40}></Icon>
+                            <Text style={{ ...styles.text, color: colorScheme == 'dark' ? '#AAAAAA' : 'black' }}>{category.name}</Text>
                         </View>
-                        <Icon name={'menu'} size={30}></Icon>
-                    </View>))}
+                        <Icon1 name={'keyboard-arrow-right'} size={40} color={colorScheme == 'dark' ? '#AAAAAA' : 'black'}></Icon1>
+                    </TouchableOpacity>))}
             </ScrollView>
         </View>
     )
 }
 
-export default CategoryExpense
+export default CategoriesExpense
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: 'white'
-    },
     flexRow: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center'
     },
-    categoryItem: {
-        height: 70,
-        width: 80,
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderWidth: 1,
-        borderColor: '#777777',
-        marginBottom: 10,
-        borderRadius: 10
-    },
     text: {
-        fontSize: 14,
-        fontWeight: 'bold',
-        color: '#555555'
+        fontSize: 18,
+        fontWeight: 'bold'
     }
 })

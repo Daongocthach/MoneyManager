@@ -26,10 +26,16 @@ const incomesReducer = (state = initialState, action) => {
                 incomes: newincomes
             }
         }
+        case 'LIST_INCOMES': {
+            return {
+                ...state,
+                incomes: action.payload
+            }
+        }
         case 'RESET_INCOMES': {
             return {
                 ...state,
-                incomes: []
+                incomes: initialState.incomes
             }
         }
         default:

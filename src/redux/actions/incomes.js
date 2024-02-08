@@ -18,7 +18,13 @@ export const deleteIncome = (data) => {
         payload: data
     }
 }
-export const resetIncome = () => {
+export const listIncomes = (data) => {
+    return {
+        type: 'LIST_INCOMES',
+        payload: data
+    }
+}
+export const resetIncomes = () => {
     return {
         type: 'RESET_INCOMES'
     }

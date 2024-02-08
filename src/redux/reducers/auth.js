@@ -1,51 +1,22 @@
 const initialState = {
-    id: '',
-    username: '',
-    email: '',
-    fullName: '',
-    phoneNo: '',
-    point: '',
-    province:'',
-    district:'',
-    districtId: '',
-    ward:'',
-    address: '',
-    avatar: ''
+    uid: '',
+    email: ''
 }
 const authReducer = (state = initialState, action) => {
     switch (action.type) {
 
         case 'LOGIN': {
+            console.log(action.payload)
             return {
                 ...state,
                 ...action.payload
             }
         }
 
-        case 'UPDATE_FULLNAME': {
-            return {
-                ...state,
-                fullName: action?.payload?.fullName
-            }
-        }
-
-        case 'UPDATE_AVATAR': {
-            return {
-                ...state,
-                avatar: action?.payload
-            }
-        }
-
         case 'LOGOUT': {
             return {
-                id: '',
-                username: '',
-                email: '',
-                fullName: '',
-                phoneNo: '',
-                point: '',
-                address: '',
-                avatar: ''
+                uid: '',
+                email: ''
             }
         }
 

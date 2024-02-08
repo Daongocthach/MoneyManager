@@ -5,3 +5,12 @@ export function formatCurrency(amount) {
     }).format(amount)
 }
 
+export function formatCurrencyToNumber(formattedAmount) {
+    // Loại bỏ dấu phẩy và ký hiệu tiền tệ
+    const cleanedValue = formattedAmount.replace(/[^\d]/g, '')
+
+    // Chuyển đổi thành giá trị số
+    const numericValue = parseFloat(cleanedValue)
+
+    return numericValue
+}

@@ -1,20 +1,6 @@
-export const login = (user) => {
+export const login = (data) => {
     return {
         type: 'LOGIN',
-        payload: user
-    }
-}
-
-export const updateFullName = (data) => {
-    return {
-        type: 'UPDATE_FULLNAME',
-        payload: data
-    }
-}
-
-export const updateAvatar = (data) => {
-    return {
-        type: 'UPDATE_AVATAR',
         payload: data
     }
 }

@@ -1,12 +1,15 @@
 import { useState } from 'react'
+import { useSelector } from 'react-redux'
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { useNavigation } from '@react-navigation/native'
+import { useColorScheme } from 'nativewind'
 
-function CategoryExpense({ categoriesExpense, setCategoryExpense }) {
+function CategoryExpense({ setCategoryExpense }) {
+    const { colorScheme } = useColorScheme()
     const navigation = useNavigation()
-    const [categories, setCategories] = useState(categoriesExpense)
     const [focused, setFocused] = useState(0)
+    const categoriesExpense = useSelector(state => state.categoriesExpense.categoriesExpense)
     const onClickEdit = () => {
         navigation.navigate('EditCategory')
     }
@@ -15,19 +18,24 @@ function CategoryExpense({ categoriesExpense, setCategoryExpense }) {
         setCategoryExpense(index)
     }
     return (
-        <View style={styles.container}>
+        <View style={{ backgroundColor: colorScheme == 'dark' ? 'black' : 'white' }}>
             <ScrollView>
                 <View style={styles.flexRow}>
-                    {Array.isArray(categories) && categories.map((category, index) => (
+                    {Array.isArray(categoriesExpense) && categoriesExpense.map((category, index) => (
                         <TouchableOpacity
-                            style={{ ...styles.categoryItem, borderWidth: focused == index ? 2.5 : 1 }}
+                            style={{
+                                ...styles.categoryItem, borderWidth: focused == index ? 3 : 0,
+                                borderColor: colorScheme == 'dark' ? '#AAAAAA' : '#696969'
+                            }}
                             key={index} onPress={() => { handleFocused(index) }}>
                             <Icon name={category?.icon} color={category.color} size={30}></Icon>
-                            <Text style={styles.text}>{category.name}</Text>
+                            <Text numberOfLines={1} ellipsizeMode='tail'
+                                style={{ ...styles.text, color: colorScheme == 'dark' ? '#AAAAAA' : '#696969' }}>{category.name}</Text>
                         </TouchableOpacity>
                     ))}
-                    <TouchableOpacity style={styles.categoryItem} onPress={onClickEdit}>
-                        <Text style={styles.text}>Thêm...</Text>
+                    <TouchableOpacity style={{ ...styles.categoryItem }}
+                        onPress={onClickEdit}>
+                        <Text style={{ ...styles.text, color: colorScheme == 'dark' ? '#AAAAAA' : '#696969', borderBottomColor: 'gray', borderBottomWidth: 2 }}>Thêm...</Text>
                     </TouchableOpacity>
                 </View>
             </ScrollView>
@@ -37,29 +45,23 @@ function CategoryExpense({ categoriesExpense, setCategoryExpense }) {
 
 export default CategoryExpense
 const styles = StyleSheet.create({
-    container: {
-        backgroundColor: '#fff'
-    },
     flexRow: {
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
         flexWrap: 'wrap',
-        gap: 20
+        gap: 7
     },
     categoryItem: {
         height: 70,
         width: 80,
         alignItems: 'center',
         justifyContent: 'center',
-        borderWidth: 1,
-        borderColor: '#00B2EE',
         marginBottom: 10,
         borderRadius: 10
     },
     text: {
-        fontSize: 14,
-        fontWeight: 'bold',
-        color: 'gray'
+        fontSize: 16,
+        fontWeight: 'bold'
     }
 })

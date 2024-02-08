@@ -1,16 +1,24 @@
 import { PieChart } from 'react-native-chart-kit'
+import { Dimensions } from 'react-native'
+import { colors } from '../../utils/color'
 
-function CircleChart() {
-  const data = [
-    { name: 'Hũ 1', population: 50, color: '#297AB1', legendFontColor: '#7F7F7F', legendFontSize: 15 },
-    { name: 'Hũ 2', population: 30, color: '#9E9E9E', legendFontColor: '#7F7F7F', legendFontSize: 15 },
-    { name: 'Hũ 3', population: 20, color: '#F26716', legendFontColor: '#7F7F7F', legendFontSize: 15 },
-  ]
+function CircleChart({ bottles, total }) {
+  const windowWidth = Dimensions.get('window').width
+  const windowHeight = Dimensions.get('window').height
+  const data = bottles.map((bottle, index) => ({
+    name: '% ' + bottle?.name,
+    population: bottle.total < 0 ? 0 : total > 0 ? Math.round((bottle.total / total) * 100) * 100 / 100 : 0,
+    color: colors[index],
+    legendFontColor: '#7F7F7F',
+    legendFontSize: 16
+  }))
+
+
   return (
     <PieChart
       data={data}
-      width={300}
-      height={200}
+      width={windowWidth*1}
+      height={windowHeight * 0.3}
       chartConfig={{
         backgroundGradientFrom: '#1E2923',
         backgroundGradientTo: '#08130D',
@@ -18,7 +26,7 @@ function CircleChart() {
       }}
       accessor="population"
       backgroundColor="transparent"
-      paddingLeft="15"
+
       absolute
     />
   )

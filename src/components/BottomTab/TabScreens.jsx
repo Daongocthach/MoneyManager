@@ -1,9 +1,9 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import BottomNavigation from './BottomNavigation'
-import Home from '../../screens/Home'
-import Setting from '../../screens/Setting'
-import Statistic from '../../screens/Statistic'
-import Transaction from '../../screens/Transaction'
+import Home from '../../screens/Home/Home'
+import Setting from '../../screens/Setting/Setting'
+import Statistic from '../../screens/Statistic/Statistic'
+import Transaction from '../../screens/Transaction/Transaction'
 
 const Tab = createBottomTabNavigator()
 function TabScreens() {

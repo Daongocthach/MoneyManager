@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "ManageMoney",
-    "slug": "ManageMoney",
+    "name": "Hũ Tài Chính",
+    "slug": "hu-tai-chinh",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/appIcon.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
@@ -14,17 +14,31 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "locales": {
+      "en": "English",
+      "es": "Español",
+      "vi": "Tiếng Việt"
+    },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.app.MoneyManager"
     },
     "android": {
+      "package": "com.app.MoneyManager",
+      "versionCode": 1,
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/appIcon.png",
         "backgroundColor": "#ffffff"
       }
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "484f546b-7dff-4ac7-83ce-4f6d90206c92"
+      }
+    },
+    "owner": "thach752"
   }
 }

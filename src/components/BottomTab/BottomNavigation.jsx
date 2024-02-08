@@ -1,29 +1,31 @@
 import { View, Text, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
+import { useColorScheme } from 'nativewind'
 
 const BottomNavigation = ({ state, descriptors, navigation }) => {
+  const { colorScheme, toggleColorScheme } = useColorScheme()
   return (
-    <View style={{ flexDirection: 'row', backgroundColor: '#eff0f1', paddingVertical: 10 }}>
+    <View style={{ flexDirection: 'row', backgroundColor: colorScheme == 'dark' ? 'black' : 'white', paddingVertical: 10 }}>
       {state.routes.map((route, index) => {
         const { options } = descriptors[route.key]
         const label =
           options.tabBarLabel !== undefined
             ? options.tabBarLabel
             : options.title !== undefined
-            ? options.title
-            : route.name
+              ? options.title
+              : route.name
 
         const isFocused = state.index === index
         let iconName
         if (route.name === 'Trang chủ') {
-            iconName ='home'
-          } else if (route.name === 'Giao dịch') {
-            iconName = 'calendar-today'
-          } else if (route.name === 'Cài đặt') {
-            iconName = 'settings'
-          } else if (route.name === 'Báo cáo') {
-            iconName = 'trending-up'
-          }
+          iconName = 'home'
+        } else if (route.name === 'Giao dịch') {
+          iconName = 'calendar-today'
+        } else if (route.name === 'Cài đặt') {
+          iconName = 'settings'
+        } else if (route.name === 'Báo cáo') {
+          iconName = 'trending-up'
+        }
 
         const onPress = () => {
           const event = navigation.emit({
@@ -55,10 +57,21 @@ const BottomNavigation = ({ state, descriptors, navigation }) => {
             style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
             key={index}
           >
-            <Icon name={iconName} size={30} color={isFocused ? '#1E90FF' : '#7a7c80'} />
-            <Text style={{ color: isFocused ? '#1E90FF' : '#7a7c80', fontWeight:'bold' }}>
-              {label}
-            </Text>
+            {colorScheme == 'dark' ?
+              <Icon name={iconName} style={{ color: isFocused ? 'white' : '#AAAAAA' }} size={30}/>
+              :
+              <Icon name={iconName} style={{ color: isFocused ? '#009ACD' : '#696969' }} size={30}/>
+            }
+            {colorScheme == 'dark' ?
+              <Text style={{ color: isFocused ? 'white' : '#AAAAAA', fontWeight: 'bold' }}>
+                {label}
+              </Text>
+              :
+              <Text style={{ color: isFocused ? '#009ACD' : '#696969', fontWeight: 'bold' }}>
+                {label}
+              </Text>
+            }
+
           </TouchableOpacity>
         )
       })}

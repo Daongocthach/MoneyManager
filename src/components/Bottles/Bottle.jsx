@@ -1,17 +1,17 @@
 import { Text, View, TouchableOpacity, Image, StyleSheet } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
-const Bottle = ({ image, name, percent, isFocused }) => {
+const Bottle = ({ bottle, isFocused }) => {
     return (
         <TouchableOpacity >
             <View style={{ ...styles.container, borderColor: isFocused ? '#00B2EE': '',
              borderWidth: isFocused ? 2: 0 }}>
                 <View style={styles.itemFlex}>
-                    <Image source={image} style={styles.image} />
+                    <Image source={bottle?.image} style={styles.image} />
                     <Text style={styles.text}>{name}</Text>
                 </View>
                 <View style={styles.itemFlex}>
-                    <Text style={styles.text}>{percent}</Text>
+                    <Text style={styles.text}>{bottle?.percent}</Text>
                     <Icon name={'chevron-right'} style={styles.icon} />
                 </View>
             </View>

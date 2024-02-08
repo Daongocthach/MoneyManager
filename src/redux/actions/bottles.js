@@ -24,6 +24,18 @@ export const incomeToBottles = (data) => {
         payload: data
     }
 }
+export const updateIncomeToBottles = (data) => {
+    return {
+        type: 'UPDATE_INCOME_TO_BOTTLES',
+        payload: data
+    }
+}
+export const updateExpenseToBottles = (data) => {
+    return {
+        type: 'UPDATE_EXPESNE_TO_BOTTLES',
+        payload: data
+    }
+}
 export const expenseToBottle = (data) => {
     return {
         type: 'EXPENSE_BOTTLE',

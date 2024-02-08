@@ -27,10 +27,16 @@ const expensesReducer = (state = initialState, action) => {
                 expenses: newexpenses
             }
         }
+        case 'LIST_EXPENSES': {
+            return {
+                ...state,
+                expenses: action.payload
+            }
+        }
         case 'RESET_EXPENSES': {
             return {
                 ...state,
-                expenses: []
+                expenses: initialState.expenses
             }
         }
         default:
