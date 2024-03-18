@@ -1,9 +1,6 @@
-![image](https://github.com/Daongocthach/MoneyManager/assets/94102125/ad606a8e-1a0c-46fa-aafd-5b4b76fe5b4f)
-![image](https://github.com/Daongocthach/MoneyManager/assets/94102125/b551d90b-a648-41e0-946c-b8a4d6e80467)
-![image](https://github.com/Daongocthach/MoneyManager/assets/94102125/d054d1b8-9b77-4a5b-b443-d2223558bd34)
-![image](https://github.com/Daongocthach/MoneyManager/assets/94102125/6448e103-3cfa-4c37-945f-ef3d654d2bb8)
-![image](https://github.com/Daongocthach/MoneyManager/assets/94102125/9ac3c689-ccdf-4495-a52a-b1d0f636fa04)
-![image](https://github.com/Daongocthach/MoneyManager/assets/94102125/09329421-61e8-43da-8275-f5aa6af56d6b)
+![image](https://github.com/Daongocthach/MoneyManager/assets/94102125/cba84a8d-79b4-4eef-898c-6cfde8c54194)
+![image](https://github.com/Daongocthach/MoneyManager/assets/94102125/f58276ce-03ef-498e-9794-e9b9d5e51510)
+
 
 Chức năng 
 - Đăng nhập, đăng ký, quên mật khẩu
