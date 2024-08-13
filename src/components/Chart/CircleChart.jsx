@@ -12,8 +12,6 @@ function CircleChart({ bottles, total }) {
     legendFontColor: '#7F7F7F',
     legendFontSize: 16
   }))
-
-
   return (
     <PieChart
       data={data}
@@ -26,7 +24,6 @@ function CircleChart({ bottles, total }) {
       }}
       accessor="population"
       backgroundColor="transparent"
-
       absolute
     />
   )

@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Hũ Tài Chính",
-    "slug": "hu-tai-chinh",
+    "slug": "ManageMoney",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/appIcon.png",
@@ -36,9 +36,9 @@
     },
     "extra": {
       "eas": {
-        "projectId": "484f546b-7dff-4ac7-83ce-4f6d90206c92"
+        "projectId": "32201944-d102-4983-b6c2-5fe085504955"
       }
     },
-    "owner": "thach752"
+    "owner": "pemeoh1"
   }
 }

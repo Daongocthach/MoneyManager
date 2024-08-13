@@ -109,12 +109,12 @@ const Setting = () => {
         const starCountRef = ref(FIREBASE_DB, 'users/' + user.uid + '/data')
         onValue(starCountRef, (snapshot) => {
           const data = snapshot.val()
-          if (data?.bottles) {
+          if (data?.bottles && data?.categoriesExpense && data?.categoriesIncome) {
             dispatch(listBottles(data?.bottles))
             dispatch(listCategoriesExpense(data?.categoriesExpense))
             dispatch(listCategoriesIncome(data?.categoriesIncome))
-            dispatch(listExpenses(data?.expenses))
-            dispatch(listIncomes(data?.incomes))
+            dispatch(listExpenses(data?.expenses || []))
+            dispatch(listIncomes(data?.incomes || []))
           }
         })
         currentUser = user
